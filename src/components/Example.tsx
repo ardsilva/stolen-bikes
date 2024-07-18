@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
 import { useEffect, useMemo, useState } from "react"
 
 export default function Example() {
-  const [resp, setResp] = useState<Object>({bikes: []});
+  const [resp, setResp] = useState<any>({bikes: []});
   const fetchBikes = useMemo(() => async () => {
     const url = "https://bikeindex.org:443/api/v3/search?page=1&per_page=18&location=PortugalP&distance=20&stolenness=stolen";
     try {
@@ -18,7 +18,7 @@ export default function Example() {
       const json = await response.json();
       console.log(json);
       setResp({bikes: json.bikes});
-    } catch (error) {
+    } catch (error: any) {
       console.error(error.message);
     }
 
@@ -44,7 +44,7 @@ export default function Example() {
       <div className="border rounded-lg p-2">
         <Table>
           <TableBody>
-            {resp.bikes.map((bike) => {
+            {resp.bikes.map((bike: any) => {
               var datetime = new Date(bike.date_stolen * 1000); 
               return (
               <TableRow key={bike.id}>
