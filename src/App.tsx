@@ -1,10 +1,14 @@
-import Example from "@/components/Example";
+import { Route, Routes } from "react-router-dom";
+import Example from "@/pages/Example";
+import CaseDetails from "./pages/CaseDetails";
+
 
 export default function App() {
 
   return (
-    <>
-      <Example />
-    </>
+    <Routes>
+      <Route path="/" element={<Example />} />
+      <Route path="/cases/:id" element={<CaseDetails />} />
+    </Routes>
   )
 }
